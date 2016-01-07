@@ -3,8 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-
-class CreateClsRecuerdosTable extends Migration
+class CreateEscuelasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +12,11 @@ class CreateClsRecuerdosTable extends Migration
      */
     public function up()
     {
-        Schema::create('cls_recuerdos', function (Blueprint $table) {
+        Schema::create('escuelas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('titulo');
-            $table->string('contenido');
+            $table->string('nombre');
+            $table->string('estado');
+            $table->integer('cantidad');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateClsRecuerdosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('cls_recuerdos');
+        Schema::drop('escuelas');
     }
 }

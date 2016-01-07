@@ -9,7 +9,7 @@
 	<form action="../../recuerdo/<?php echo $data['id'] ?>" method="POST">
 		<div>
 			<label for="">Titulo</label>
-			<input type="text" name="titulo" value='<?php echo $data['titulo'] ?>'>			
+			<input type="text" name="titulo" value='<?php echo $data['titulo'] ?>'>
 		</div>
 
 		<div>

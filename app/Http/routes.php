@@ -11,6 +11,11 @@
 |
 */
 
+Route::get('blog/about',['as'=>'blog.about','uses'=>'blogController@getAbout']);
+Route::get('blog/post',['as'=>'blog.post','uses'=>'blogController@getPost']);
+Route::get('blog/contact',['as'=>'blog.contact','uses'=>'blogController@getContact']);
+
+Route::resource('blog','blogController');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -35,6 +40,10 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::get('home',function(){
 		return view('home');
 	});
+
+
 	Route::resource('recuerdo','recuerdoController');
-	
+	/*php artisan route:list*/
+
+
 });

@@ -6,10 +6,14 @@
 </head>
 <body>
 	<h1>Formulario de registro</h1>
+	@if(count($errors) > 0)
+	<?php dd($errors->all()) ?>
+
+	@endif
 	<form action="../recuerdo" method="POST">
 		<div>
 			<label for="">Titulo</label>
-			<input type="text" name="titulo">			
+			<input type="text" name="titulo">
 		</div>
 
 		<div>

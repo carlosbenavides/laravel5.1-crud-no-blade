@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\clsRecuerdo;
+use App\Http\Requests\recordRequest;
 
 class recuerdoController extends Controller
 {
@@ -15,6 +16,7 @@ class recuerdoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    /*/recuerdo*/
     public function index()
     {
         $data = clsRecuerdo::all();
@@ -37,26 +39,37 @@ class recuerdoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(recordRequest $request)
     {
         /*
         FORMA 1 - 
-        clsRecuerdo::create([
-                'titulo' => $request['titulo'],
-                'contenido' => $request['contenido']    
-               ]);
         */
+     /*   $data = clsRecuerdo::create([
+                'titulo' => $request['titulo'],
+                'contenido' => $request['contenido'],
+               ]);
+        dd($data);
+*/
 
-        /* FORMA 2 */
-        $data = $request->all();
-        /*$data->save();*/
-        /*dd($request);*/
-        
-        $data = new clsRecuerdo();
-        $data->titulo = $request['titulo']; 
-        $data->contenido = $request['contenido']; 
-        $data->save();
+        /* FORMA 2 - */ 
+      
+        $data = clsRecuerdo::create($request->all());
         return redirect('recuerdo');
+        /*dd($data);*/
+
+        /* FORMA 3*/
+        
+        
+        /*$data = new clsRecuerdo();*/
+       /* $data->titulo = "asdasd";
+        $data->contenido = "aasdsss";
+        $data->save();*/
+
+        /*$data->titulo = $request['titulo']; 
+        $data->contenido = $request['contenido']; 
+        $data->datos = $request['contenido']; 
+        $data->save();
+        dd($data);*/
     }
 
     /**
@@ -116,4 +129,16 @@ class recuerdoController extends Controller
         $data->delete();
         return redirect('recuerdo');
     }
+   /* php artisan make:controller nombreControlador
+    php artisan make:model frutas -m <- creas modelo y la migracion
+
+    carteta 
+        database
+            migrations 
+                ....
+                ....
+                ....
+
+    php artisan migrate <- creas tablas
+*/
 }
